@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "proteldemo": "proteldemo",
+    "default": "proteldemo"
+  }
+}
