@@ -36,16 +36,21 @@ import {
 
 import { AppComponent } from './app.component';
 
+import { routing } from './app.routing';
+
 import { ServiceService } from './services/service.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-
+import { DetailsComponent } from './pages/details/details.component';
+import { MainComponent } from './pages/main/main.component';
 
 @NgModule({ 
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailsComponent,
+    MainComponent
   ],
   imports: [
     HttpClientModule,
@@ -70,6 +75,7 @@ import { HttpModule } from '@angular/http';
     ReactiveFormsModule,
     MatDialogModule,
     MatStepperModule,
+    routing,
   ],
   providers: [ 
     ServiceService,
