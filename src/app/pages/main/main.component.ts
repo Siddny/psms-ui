@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-main',
@@ -12,13 +12,16 @@ import { MatTableDataSource } from '@angular/material';
 export class MainComponent implements OnInit {
 
   cam_type_list: any[]=[]
-  newCamType: CameraType = new CameraType()
-  newCam: Camera = new Camera()
+  newCamDetail: CameraDetail = new CameraDetail()
 
   displayedColumns = ['name'];
   dataSource: any;
+  addTypeRow = ['Add'];
 
-  constructor(private _services: ServiceService,) { }
+  constructor(
+    private _services: ServiceService,
+    public dialog: MatDialog,
+    ) { }
     
   ngOnInit() {
     //list camara types
@@ -29,6 +32,41 @@ export class MainComponent implements OnInit {
     })
   }
 
+  openCamTypeDialog(): void {
+    let dialogRef = this.dialog.open(NewCamType, {
+      width: '600px',
+    });
+  }
+
+  newCameraDetail(){
+    this._services.newCameraDetail(this.newCamDetail).subscribe(res=>{
+      this.newCamDetail = new CameraDetail()
+      console.log(this.newCamDetail)
+    })
+  }
+
+  newCameraDetailsssss(){
+    this._services.addCameraDetail(this.newCamDetail).subscribe(res=>{
+      this.newCamDetail = new CameraDetail()
+      console.log(this.newCamDetail)
+    })
+  }
+}
+
+@Component({
+  selector: 'add_camera_type',
+  templateUrl: './modals/add_camera_type.html',
+  styleUrls: ['./main.component.css']
+})
+export class NewCamType {
+
+  newCamType: CameraType = new CameraType()
+
+  constructor(private _services: ServiceService,
+    public dialogRef: MatDialogRef<NewCamType>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    ) { }
+
   newCameraType(){
     this._services.newCameraType(this.newCamType).subscribe(res=>{
     this.newCamType = new CameraType()
@@ -36,11 +74,8 @@ export class MainComponent implements OnInit {
     })
   }
 
-  newCamera(){
-    this._services.newCamera(this.newCam).subscribe(res=>{
-      this.newCam = new Camera()
-      console.log(this.newCam)
-    })
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
@@ -49,7 +84,7 @@ export class CameraType{
   name: string;
 }
 
-export class Camera{
+export class CameraDetail{
   name: string;
   model: string;
   status: string;

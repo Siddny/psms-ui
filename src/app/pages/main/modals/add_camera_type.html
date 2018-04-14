@@ -1,0 +1,8 @@
+<mat-toolbar>Add New Camera Type</mat-toolbar>
+
+<form>
+	<mat-form-field class="full-width">
+	<input matInput placeholder="Camera Type" name="name" [(ngModel)]="newCamType.name">
+	</mat-form-field>
+	<button mat-raised-button (click)="newCameraType();onNoClick()" style="background-color: #e3e3e3;">Save</button>
+</form>

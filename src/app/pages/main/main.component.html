@@ -1,47 +1,8 @@
-<mat-toolbar>Protel Demo</mat-toolbar>
+<!-- <mat-toolbar>Protel Demo</mat-toolbar> -->
+<mat-toolbar>Cameras</mat-toolbar>
 
-<mat-card class="m-3">
-<form>
-	<mat-form-field class="example-full-width">
-	<input matInput placeholder="Camera Type" name="name" [(ngModel)]="newCamType.name">
-	</mat-form-field>
-	<button mat-raised-button (click)="newCameraType()" style="background-color: #e3e3e3;">Save</button>
-</form>
-</mat-card>
-
-<mat-card class="m-3">
-  <form class="example-form">
-  	<mat-form-field class="mat-inputs">
-  		<input matInput placeholder="Name" name="name">
-  	</mat-form-field>
-  	<br>
-  	<mat-form-field class="mat-inputs">
-  		<input matInput placeholder="Model"  name="lname">
-  	</mat-form-field>
-  	<br>
-  	<mat-form-field>
-  	  <mat-select placeholder="Status" name="status" [(ngModel)]="newCamera.status">
-          <mat-option [value]="Good">Good</mat-option>
-          <mat-option [value]="Fair">Fair</mat-option>
-          <mat-option [value]="Bad">Bad</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-  	<mat-select placeholder="Camera Type" >
-          <mat-option *ngFor="let type of cam_type_list" [value]="type.name">
-            {{ type.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-  	<div>
-  		<button (click)="newCameraType()" mat-raised-button style="background-color: #e3e3e3;">Save</button>
-      </div>
-  </form>
-</mat-card>
-
-<div class="example-container mat-elevation-z8">
+<h3 style="text-align: left; margin-left: 10px;"></h3>
+<div class="mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
     <!-- Name Column -->
@@ -53,4 +14,39 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+  <div (click)="openCamTypeDialog()">
+    <small>Add</small>
+  </div>
 </div>
+
+<mat-card class="m-3">
+  <mat-toolbar> Add a new camera</mat-toolbar>
+  <form class="example-form">
+    <mat-form-field>
+      <input matInput placeholder="Name" name="name" [(ngModel)]="newCamDetail.name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Model"  name="model" [(ngModel)]="newCamDetail.model">
+    </mat-form-field>
+    <!-- <mat-form-field> -->
+      <!-- <input matInput placeholder="Status"  name="status" [(ngModel)]="newCamDetail.status"> -->
+<!--      <mat-select placeholder="Status" name="status" [(ngModel)]="newCamDetail.status">
+          <mat-option [value]="Good">Good</mat-option>
+          <mat-option [value]="Fair">Fair</mat-option>
+          <mat-option [value]="Bad">Bad</mat-option>
+        </mat-select>-->
+    <!-- </mat-form-field>  -->
+
+    <mat-form-field>
+      <mat-select placeholder="Camera Type" name="camera_type" [(ngModel)]="newCamDetail.camera_type">
+        <mat-option *ngFor="let type of cam_type_list" [value]="type.id">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      <button (click)="newCameraDetail()" mat-raised-button style="background-color: #e3e3e3;">Save</button>
+    </div>
+  </form>
+</mat-card>

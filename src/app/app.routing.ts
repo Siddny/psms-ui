@@ -7,7 +7,7 @@ import { DetailsComponent } from './pages/details/details.component';
 
 const appRoute: Routes = [
 	{
-		path: '',
+		path: 'app',
 		component: AppComponent,
 	},
 	{
@@ -15,7 +15,7 @@ const appRoute: Routes = [
 		component: DetailsComponent,
 	},
 	{
-		path: 'home',
+		path: '',
 		component: MainComponent,
 	}
 ]

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-
+import { AppConst } from '../constants/app.constants';
 
 const httpOptions = {
     headers: new Headers({ 'Content-Type': 'application/json' })
@@ -11,38 +11,65 @@ const httpOptions = {
 @Injectable()
 export class ServiceService {
 
+  public serverPath: string = AppConst.serverPath
+
   constructor(private http: Http) { }
 
-  getCameraType(){
-  	let url = 'https://psms.herokuapp.com/camera_types/'
-  	return this.http.get(url).map(response=>response.json())
-  }
-
+  // create new type of camera
   newCameraType(name:any){
-  	let url = 'https://psms.herokuapp.com/new_type/'
+  	let url = this.serverPath+'/new_type/'
     let headers = new Headers({
       'Content-Type' : 'application/json',
     });
   	return this.http.post(url , JSON.stringify(name), {headers : headers})
   }
 
+  //show types of cameras
+  getCameraType(){
+    let url = this.serverPath+'/camera_types/'
+    return this.http.get(url).map(response=>response.json())
+  }
+
   listCategory(id) {
-    let url = 'https://psms.herokuapp.com/camera_types/'+id+'/'
+    let url = this.serverPath+'/camera_types/'+id+'/'
     let headers = new Headers({
       'Content-Type' : 'application/json',
     });
     return this.http.get(url).map(response=>response.json())
   }
 
-  newCamera(name:any){
-    let url = 'https://psms.herokuapp.com/camera_detail_create/'
+  //create camera details
+  newCameraDetail(name:any){
+    let url = this.serverPath+'/camera_detail_create/'
     let headers = new Headers({
       'Content-Type' : 'application/json',
     });
-    return this.http.get(url).map(response=>response.json())
+    return this.http.post(url, JSON.stringify(name), {headers: headers})
   }
-
   
+  //ya keegan 
+  addCameraDetail(name:any){
+    let url = this.serverPath+'/camera_detail_add/'
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.post(url, JSON.stringify(name), {headers: headers})
+  }
+
+  //get camera details
+  getCameraDetails(id){
+    let url = this.serverPath+'/camera_detail/'
+    // return this.http.get(url).map(response=>response.json())
+    return this.http.get(url).map(response=>{
+      let data = response.json().filter(item=>{
+        if (item.camera_type == id) {
+          return item
+        }
+      })
+      console.log(data)
+      return data
+    })
+  }
 
   // getStocks(){
   //   let url = 'https://127.0.0.1:8000/proc/stock/list/';

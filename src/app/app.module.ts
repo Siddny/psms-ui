@@ -44,13 +44,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { DetailsComponent } from './pages/details/details.component';
-import { MainComponent } from './pages/main/main.component';
+import { 
+    MainComponent, 
+    NewCamType 
+    } from './pages/main/main.component';
 
 @NgModule({ 
   declarations: [
     AppComponent,
     DetailsComponent,
-    MainComponent
+    MainComponent,
+    NewCamType,
   ],
   imports: [
     HttpClientModule,
@@ -84,5 +88,8 @@ import { MainComponent } from './pages/main/main.component';
   schemas:[ 
     CUSTOM_ELEMENTS_SCHEMA
   ],
+  entryComponents: [
+    NewCamType,
+  ]
 })
 export class AppModule { }
