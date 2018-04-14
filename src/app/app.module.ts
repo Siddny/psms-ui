@@ -43,11 +43,17 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import { DetailsComponent } from './pages/details/details.component';
+import { 
+    DetailsComponent,
+    CameraDetails,
+    } from './pages/details/details.component';
 import { 
     MainComponent, 
-    NewCamType 
+    NewCamType,
     } from './pages/main/main.component';
+
+
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({ 
   declarations: [
@@ -55,6 +61,7 @@ import {
     DetailsComponent,
     MainComponent,
     NewCamType,
+    CameraDetails,
   ],
   imports: [
     HttpClientModule,
@@ -79,6 +86,7 @@ import {
     ReactiveFormsModule,
     MatDialogModule,
     MatStepperModule,
+    NgxChartsModule,
     routing,
   ],
   providers: [ 
@@ -90,6 +98,7 @@ import {
   ],
   entryComponents: [
     NewCamType,
+    CameraDetails,
   ]
 })
 export class AppModule { }

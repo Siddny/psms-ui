@@ -1,3 +1,9 @@
 .full-width{
 	width: 100%;
 }
+
+.dashbrd>div>mat-card{
+	background-color: #767A87;
+	width: calc(100%);
+	height: calc(100%);
+}

@@ -1,5 +1,13 @@
+<mat-sidenav-container fullscreen class="example-container" (backdropClick)="close('backdrop')">
+<mat-sidenav-content fullscreen>
+    <mat-toolbar style="color: white; background-color: #71737B;">
+      PSMS
+    </mat-toolbar>
 
-<!-- <mat-toolbar>Protel Demo</mat-toolbar> -->
-<div>
+    <router-outlet></router-outlet>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- <div>
   <router-outlet></router-outlet>
-</div>
+</div> -->

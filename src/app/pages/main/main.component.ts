@@ -3,6 +3,7 @@ import { ServiceService } from '../../services/service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-main',
@@ -11,8 +12,15 @@ import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@a
 })
 export class MainComponent implements OnInit {
 
+  view1: any[] = [175, 150];
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
   cam_type_list: any[]=[]
+  showdiv: boolean= true
   newCamDetail: CameraDetail = new CameraDetail()
+  cameras_list: any[]=[]
 
   displayedColumns = ['name'];
   dataSource: any;
@@ -24,11 +32,22 @@ export class MainComponent implements OnInit {
     ) { }
     
   ngOnInit() {
-    //list camara types
+    //list camera types
     this._services.getCameraType().subscribe(data=>{
       this.cam_type_list = data;
       console.log(this.cam_type_list)
       this.dataSource = new MatTableDataSource <Element>(this.cam_type_list)
+
+      if (data.length==0) {
+        // code...
+        this.showdiv = false
+      }
+    })
+
+    //get all cameras
+    this._services.getAllCam().subscribe(data=>{
+      this.cameras_list = data.length
+      console.log(this.cameras_list)
     })
   }
 
@@ -62,7 +81,8 @@ export class NewCamType {
 
   newCamType: CameraType = new CameraType()
 
-  constructor(private _services: ServiceService,
+  constructor(
+    private _services: ServiceService,
     public dialogRef: MatDialogRef<NewCamType>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     ) { }

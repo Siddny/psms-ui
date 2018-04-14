@@ -56,10 +56,21 @@ export class ServiceService {
     return this.http.post(url, JSON.stringify(name), {headers: headers})
   }
 
-  //get camera details
+  //get all cameras
+  getAllCam(){
+    let url = this.serverPath+'/camera_detail/'
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.get(url).map(response=>response.json())
+  }
+
+  //get camera details per camera category id
   getCameraDetails(id){
     let url = this.serverPath+'/camera_detail/'
-    // return this.http.get(url).map(response=>response.json())
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
     return this.http.get(url).map(response=>{
       let data = response.json().filter(item=>{
         if (item.camera_type == id) {
@@ -71,6 +82,22 @@ export class ServiceService {
     })
   }
 
+  //get Finer Details 
+  getFinerDetails(id){
+    let url = this.serverPath+'/camera_detail/'
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.get(url).map(response=>{
+      let data = response.json().filter(item=>{
+        if (item.id == id) {
+          return item
+        }
+      })
+      console.log(data)
+      return data
+    })
+  }
   // getStocks(){
   //   let url = 'https://127.0.0.1:8000/proc/stock/list/';
   //   return this.http.get(url).map(response=> response.json())

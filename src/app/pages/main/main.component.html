@@ -1,23 +1,56 @@
 <!-- <mat-toolbar>Protel Demo</mat-toolbar> -->
-<mat-toolbar>Cameras</mat-toolbar>
+<h3 class="mt-2">Cameras</h3>
 
-<h3 style="text-align: left; margin-left: 10px;"></h3>
-<div class="mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell routerLink="/camera/{{element.id}}" *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-  <div (click)="openCamTypeDialog()">
-    <small>Add</small>
+<div class="row dashbrd">
+  <div *ngIf="showdiv" class="col-md-6 row1-col">
+    <mat-card>
+      <!-- <div class="col-md-12 centering-box width2"> -->
+          <!-- [min]="0" 
+          [previousValue]="80" -->
+          <ngx-charts-linear-gauge 
+            [view]="view1" 
+            [scheme]="colorScheme" 
+            [value]="cam_type_list.length" 
+            [max]="cam_type_list.length"  
+            [units]="'Total Camera Categories'"
+            (select)="onSelect($event)">
+          </ngx-charts-linear-gauge>
+      <!-- </div> -->
+    </mat-card>
+  </div>
+  <div *ngIf="cameras_list" class="col-md-6 row1-col">
+    <mat-card>
+      <!-- <div class="col-md-12 centering-box width2"> -->
+        <ngx-charts-linear-gauge 
+          [view]="view1" 
+          [scheme]="colorScheme" 
+          [value]="cameras_list" 
+          [max]="cameras_list"  
+          [units]="'Total Cameras'"
+          (select)="onSelect($event)">
+        </ngx-charts-linear-gauge>
+      <!-- </div> -->
+    </mat-card>
   </div>
 </div>
+
+<mat-toolbar class="mt-2">Camera Categories</mat-toolbar>
+  <div class="mat-elevation-z8 col-md-12">
+    <mat-table #table [dataSource]="dataSource">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell routerLink="/camera/{{element.id}}" *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <div class="col-md-12" style="color: white;background-color: #254fac;" (click)="openCamTypeDialog()">
+      <small>Add</small>
+    </div>
+  </div>
 
 <mat-card class="m-3">
   <mat-toolbar> Add a new camera</mat-toolbar>
