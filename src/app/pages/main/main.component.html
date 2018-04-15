@@ -2,34 +2,39 @@
 <h3 class="mt-2">Cameras</h3>
 
 <div class="row dashbrd">
-  <div *ngIf="showdiv" class="col-md-6 row1-col">
-    <mat-card>
-      <!-- <div class="col-md-12 centering-box width2"> -->
+  <div *ngIf="showdiv" class="col-md-6 col-sm-6 col-6 row1-col">
+    <mat-card class="toprow">
+      <div class="col-md-12 centering-box width2">
+        <h1>{{ cam_type_list.length }}</h1>
+        <small>Total Camera Categories</small>
           <!-- [min]="0" 
           [previousValue]="80" -->
-          <ngx-charts-linear-gauge 
+          <!-- <ngx-charts-linear-gauge 
             [view]="view1" 
             [scheme]="colorScheme" 
             [value]="cam_type_list.length" 
             [max]="cam_type_list.length"  
             [units]="'Total Camera Categories'"
             (select)="onSelect($event)">
-          </ngx-charts-linear-gauge>
-      <!-- </div> -->
+          </ngx-charts-linear-gauge> -->
+      </div>
     </mat-card>
   </div>
-  <div *ngIf="cameras_list" class="col-md-6 row1-col">
-    <mat-card>
-      <!-- <div class="col-md-12 centering-box width2"> -->
-        <ngx-charts-linear-gauge 
+
+  <div *ngIf="cameras_list" class="col-md-6 col-sm-6 col-6 row1-col">
+    <mat-card class="toprow">
+      <div class="col-md-12 centering-box width2">
+        <h1>{{ cameras_list }} </h1>
+        <small>Total Cameras</small>
+     <!--    <ngx-charts-linear-gauge 
           [view]="view1" 
           [scheme]="colorScheme" 
           [value]="cameras_list" 
           [max]="cameras_list"  
           [units]="'Total Cameras'"
           (select)="onSelect($event)">
-        </ngx-charts-linear-gauge>
-      <!-- </div> -->
+        </ngx-charts-linear-gauge> -->
+      </div>
     </mat-card>
   </div>
 </div>
@@ -58,17 +63,22 @@
     <mat-form-field>
       <input matInput placeholder="Name" name="name" [(ngModel)]="newCamDetail.name">
     </mat-form-field>
+
     <mat-form-field>
       <input matInput placeholder="Model"  name="model" [(ngModel)]="newCamDetail.model">
     </mat-form-field>
-    <!-- <mat-form-field> -->
-      <!-- <input matInput placeholder="Status"  name="status" [(ngModel)]="newCamDetail.status"> -->
-<!--      <mat-select placeholder="Status" name="status" [(ngModel)]="newCamDetail.status">
-          <mat-option [value]="Good">Good</mat-option>
-          <mat-option [value]="Fair">Fair</mat-option>
-          <mat-option [value]="Bad">Bad</mat-option>
-        </mat-select>-->
-    <!-- </mat-form-field>  -->
+
+    <mat-form-field>
+      <input matInput placeholder="Serial Number"  name="p_serial_number" [(ngModel)]="newCamDetail.p_serial_number">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Status" name="status" [(ngModel)]="newCamDetail.status">
+          <mat-option *ngFor="let name of choice_s" [value]="name.value">
+            {{ name.viewValue}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field> 
 
     <mat-form-field>
       <mat-select placeholder="Camera Type" name="camera_type" [(ngModel)]="newCamDetail.camera_type">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +18,7 @@ export class DetailsComponent implements OnInit {
   id: any
 
 
-  displayedColumns = ['name', 'model', 'date_added', 'status'];
+  displayedColumns = ['name', 'model', 'p_serial_number', 'date_added', 'status'];
   dataSource: any;
 
   constructor(
@@ -64,7 +64,14 @@ export class CameraDetails implements OnInit{
   	private route: ActivatedRoute,
     public dialogRef: MatDialogRef<CameraDetails>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-  	) { }
+    private ref: ChangeDetectorRef,
+  	) 
+   { 
+    //   setInterval(() => {
+    //   this.ngOnInit();
+    //   this.ref.markForCheck();
+    // }, 1000);
+  }
 
   ngOnInit() {
   	this.getFinerdetails(this.id)

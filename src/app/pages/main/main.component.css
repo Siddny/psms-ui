@@ -7,3 +7,8 @@
 	width: calc(100%);
 	height: calc(100%);
 }
+.toprow{
+	align-content: center; 
+	background-color:royalblue; 
+	color:white;
+}

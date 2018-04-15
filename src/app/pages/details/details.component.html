@@ -15,6 +15,12 @@
       <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
     </ng-container>
 
+    <!-- Protel Serial Number Column -->
+    <ng-container matColumnDef="p_serial_number">
+      <mat-header-cell *matHeaderCellDef> P.Serial </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.p_serial_number}} </mat-cell>
+    </ng-container>
+
     <!-- Date Added Column -->
     <ng-container matColumnDef="date_added">
       <mat-header-cell *matHeaderCellDef> Date Added </mat-header-cell>

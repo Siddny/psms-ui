@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,7 +29,14 @@ export class MainComponent implements OnInit {
   constructor(
     private _services: ServiceService,
     public dialog: MatDialog,
-    ) { }
+    private ref: ChangeDetectorRef,
+    ) 
+    {
+    //   setInterval(() => {
+    //   this.ngOnInit();
+    //   this.ref.markForCheck();
+    // }, 1000);
+    }
     
   ngOnInit() {
     //list camera types
@@ -70,6 +77,12 @@ export class MainComponent implements OnInit {
       console.log(this.newCamDetail)
     })
   }
+
+  choice_s = [
+    {value: 'Good', viewValue: 'Good'},
+    {value: 'Fair', viewValue: 'Fair'},
+    {value: 'Bad', viewValue: 'Bad'}
+  ];
 }
 
 @Component({
@@ -107,6 +120,7 @@ export class CameraType{
 export class CameraDetail{
   name: string;
   model: string;
+  p_serial_number: string;
   status: string;
   camera_type: string;
 }
