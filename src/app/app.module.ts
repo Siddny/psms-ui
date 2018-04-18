@@ -16,6 +16,8 @@ import { MatListModule }     from '@angular/material/list';
 import { MatButtonModule }   from '@angular/material/button';
 // import { MatInputModule }    from '@angular/material/input';
 import { MatInputModule }    from '@angular/material';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 import { MatExpansionModule }from '@angular/material/expansion';
 import { MatDatepickerModule }from '@angular/material/datepicker';
@@ -46,6 +48,7 @@ import { HttpModule } from '@angular/http';
 import { 
     DetailsComponent,
     CameraDetails,
+    UpdateCameraDetails,
     } from './pages/details/details.component';
 import { 
     MainComponent, 
@@ -62,6 +65,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MainComponent,
     NewCamType,
     CameraDetails,
+    UpdateCameraDetails,
   ],
   imports: [
     HttpClientModule,
@@ -87,6 +91,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatDialogModule,
     MatStepperModule,
     NgxChartsModule,
+    MatChipsModule,
     routing,
   ],
   providers: [ 
@@ -99,6 +104,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   entryComponents: [
     NewCamType,
     CameraDetails,
+    UpdateCameraDetails,
   ]
 })
 export class AppModule { }

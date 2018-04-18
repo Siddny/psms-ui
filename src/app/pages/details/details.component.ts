@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef, Input } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,15 +8,17 @@ import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@a
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
+  // template: `
+  //   <update_camera_details [myvalue]="idvalue"></update_camera_details>
+  // `,
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
 
   camera_details: any[]=[]
-  detail_list: any
   my_list: any[]=[]
   id: any
-
+  idvalue: any
 
   displayedColumns = ['name', 'model', 'p_serial_number', 'date_added', 'status'];
   dataSource: any;
@@ -28,7 +30,7 @@ export class DetailsComponent implements OnInit {
   	) { }
 
   ngOnInit() {
-	this.detail_list = this.route.params.subscribe(params=>{
+	this.route.params.subscribe(params=>{
 		this.id = params['id']
     	console.log(this.id)
 		this._services.getCameraDetails(this.id).subscribe(data=>{
@@ -45,6 +47,23 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  openCamUpdateDialog(): void {
+    let dialogRef = this.dialog.open(UpdateCameraDetails, {
+      width: '600px',
+    });
+  }
+
+  update(id){
+    this.idvalue = id
+    // console.log(this.idvalue)
+  }
+
+  deleteCam(id){
+    console.log(id)
+    this._services.DeleteCameraDetail(id).subscribe(data=>{
+      console.log(data)
+    })
+  }
 }
 
 @Component({
@@ -82,8 +101,68 @@ export class CameraDetails implements OnInit{
 		console.log(this.id)
 		this.infor = data
 		console.log(this.infor)
-		// this.dataSource = new MatTableDataSource <Element>(this.infor)
 	})
   }
 
+}
+
+@Component({
+  selector: 'update_camera_details',
+  templateUrl: './modals/update_camera_details.html',
+  styleUrls: ['./details.component.css']
+})
+
+export class UpdateCameraDetails implements OnInit{
+
+  @Input() myvalue: any
+
+  id: any
+  camUpdate: CameraDetailUpdate = new CameraDetailUpdate()
+  details: any[]=[]
+
+  constructor(
+    private _services: ServiceService,
+    private route: ActivatedRoute,
+    public dialogRef: MatDialogRef<UpdateCameraDetails>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private ref: ChangeDetectorRef,
+    ) { }
+
+  ngOnInit(){
+
+    console.log(this.myvalue)
+    this.route.params.subscribe(params=>{
+    this.id = params['id']
+    console.log(this.id)
+    // this._services.getFinerDetails(this.id).subscribe(data=>{
+    //   this.details = data
+    //   console.log(this.details)
+    // })
+  })
+    this.getFinerdetails(this.myvalue)
+  }
+
+  getFinerdetails(myvalue){
+  this._services.getFinerDetails(this.myvalue).subscribe(data=>{
+    console.log(this.myvalue)
+    this.details = data
+    console.log(this.details)
+    })
+  }
+
+  updateCam(id){
+    this._services.PutCameraDetail(id).subscribe(data=>{
+      this.camUpdate = new CameraDetailUpdate()
+      console.log(this.camUpdate)
+    })
+  }
+
+}
+
+export class CameraDetailUpdate{
+  name: string;
+  model: string;
+  p_serial_number: string;
+  status: string;
+  camera_type: string;
 }

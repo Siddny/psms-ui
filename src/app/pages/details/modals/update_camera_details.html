@@ -1,0 +1,34 @@
+  <mat-toolbar> Update camera</mat-toolbar>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="Name" name="name" [(ngModel)]="camUpdate.name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Model"  name="model" [(ngModel)]="camUpdate.model">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Serial Number"  name="p_serial_number" [(ngModel)]="camUpdate.p_serial_number">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Status" name="status" [(ngModel)]="camUpdate.status">
+          <mat-option *ngFor="let name of choice_s" [value]="name.value">
+            {{ name.viewValue}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field> 
+
+    <mat-form-field>
+      <mat-select placeholder="Camera Type" name="camera_type" [(ngModel)]="camUpdate.camera_type">
+        <mat-option *ngFor="let type of cam_type_list" [value]="type.id">
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div>
+      <button (click)="updateCam(item.id)" mat-raised-button style="background-color: #e3e3e3;">Save</button>
+    </div>
+  </form>

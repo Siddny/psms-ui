@@ -32,10 +32,10 @@ export class MainComponent implements OnInit {
     private ref: ChangeDetectorRef,
     ) 
     {
-      setInterval(() => {
-      this.ngOnInit();
-      this.ref.markForCheck();
-    }, 1000);
+    //   setInterval(() => {
+    //   this.ngOnInit();
+    //   this.ref.markForCheck();
+    // }, 1000);
     }
     
   ngOnInit() {

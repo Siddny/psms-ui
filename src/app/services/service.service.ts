@@ -98,22 +98,20 @@ export class ServiceService {
       return data
     })
   }
-  // getStocks(){
-  //   let url = 'https://127.0.0.1:8000/proc/stock/list/';
-  //   return this.http.get(url).map(response=> response.json())
-  // }
 
-  // getStockList(id) {
-  //   let url = 'https://127.0.0.1:8000/proc/stock/get/'+id+'/';
-  //   return this.http.get(url).map(response=>response.json())
-  // }
+  PutCameraDetail(id){
+    let url = this.serverPath+'/up/'+id+'/'
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.put(url, JSON.stringify(id), {headers:headers})
+  }
 
-  // newStockProduct(stockproduct:any) {
-  //   let url = 'https://127.0.0.1:8000/proc/product/';
-  //   let headers = new Headers({
-  //     'Content-Type' : 'application/json',
-  //   });
-  //   return this.http.post(url, JSON.stringify(stockproduct), {headers : headers});
-  // }
-
+  DeleteCameraDetail(id){
+    let url = this.serverPath+'/del/'+id+'/'
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.delete(url, {headers:headers})
+  }
 }

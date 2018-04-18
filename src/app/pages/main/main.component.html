@@ -52,14 +52,14 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-    <div class="col-md-12" style="color: white;background-color: #254fac;" (click)="openCamTypeDialog()">
+    <div class="col-md-12" style="color: white;background-color: #28a745;" (click)="openCamTypeDialog()">
       <small>Add</small>
     </div>
   </div>
 
 <mat-card class="m-3">
   <mat-toolbar> Add a new camera</mat-toolbar>
-  <form class="example-form">
+  <form>
     <mat-form-field>
       <input matInput placeholder="Name" name="name" [(ngModel)]="newCamDetail.name">
     </mat-form-field>
