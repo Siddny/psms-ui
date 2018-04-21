@@ -27,7 +27,13 @@ export class DetailsComponent implements OnInit {
   	private _services: ServiceService,
   	private route: ActivatedRoute,
     public dialog: MatDialog,
-  	) { }
+    private ref: ChangeDetectorRef,
+  	) {
+      // setInterval(() => {
+      // this.ngOnInit();
+      // this.ref.markForCheck();
+      //   }, 3000);
+     }
 
   ngOnInit() {
 	this.route.params.subscribe(params=>{

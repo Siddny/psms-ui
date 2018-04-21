@@ -12,6 +12,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 })
 export class MainComponent implements OnInit {
 
+  view: any[] = [700, 400];
   view1: any[] = [175, 150];
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
@@ -21,6 +22,9 @@ export class MainComponent implements OnInit {
   showdiv: boolean= true
   newCamDetail: CameraDetail = new CameraDetail()
   cameras_list: any[]=[]
+  good: any
+  fair: any
+  bad: any
 
   displayedColumns = ['name'];
   dataSource: any;
@@ -32,12 +36,14 @@ export class MainComponent implements OnInit {
     private ref: ChangeDetectorRef,
     ) 
     {
-    //   setInterval(() => {
-    //   this.ngOnInit();
-    //   this.ref.markForCheck();
-    // }, 1000);
+      // setInterval(() => {
+      // this.ngOnInit();
+      // this.ref.markForCheck();
+      // }, 1000);
+    Object.assign(this, {status})   
     }
     
+
   ngOnInit() {
     //list camera types
     this._services.getCameraType().subscribe(data=>{
@@ -55,8 +61,39 @@ export class MainComponent implements OnInit {
     this._services.getAllCam().subscribe(data=>{
       this.cameras_list = data.length
       console.log(this.cameras_list)
+      
+      let bad_cam: number = 0
+      for (let items of data) if (items.status == "Bad") bad_cam++;
+      console.log("bad "+bad_cam)
+      this.bad = bad_cam
+
+      let fair_cam: number = 0
+      for (let items of data) if (items.status == "Fair") fair_cam++;
+      console.log("fair "+fair_cam)
+      this.fair = fair_cam
+
+      let good_cam: number = 0
+      for (let items of data) if (items.status == "Good") good_cam++;
+      console.log("good "+good_cam)
+      this.good = good_cam
+
     })
   }
+
+  status: Array<any> = [
+    {
+      "name": "Good",
+      "value": this.good
+    },
+    {
+      "name": "Fair",
+      "value": this.fair
+    },
+    {
+      "name": "Bad",
+      "value": this.bad
+    }
+  ];
 
   openCamTypeDialog(): void {
     let dialogRef = this.dialog.open(NewCamType, {

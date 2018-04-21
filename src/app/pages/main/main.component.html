@@ -5,18 +5,19 @@
   <div *ngIf="showdiv" class="col-md-6 col-sm-6 col-6 row1-col">
     <mat-card class="toprow">
       <div class="col-md-12 centering-box width2">
-        <h1>{{ cam_type_list.length }}</h1>
-        <small>Total Camera Categories</small>
+        <!-- <h1>{{ cam_type_list.length }}</h1> -->
+        <!-- <small>Total Camera Units</small> -->
+
           <!-- [min]="0" 
           [previousValue]="80" -->
-          <!-- <ngx-charts-linear-gauge 
+          <ngx-charts-linear-gauge 
             [view]="view1" 
             [scheme]="colorScheme" 
             [value]="cam_type_list.length" 
             [max]="cam_type_list.length"  
             [units]="'Total Camera Categories'"
             (select)="onSelect($event)">
-          </ngx-charts-linear-gauge> -->
+          </ngx-charts-linear-gauge>
       </div>
     </mat-card>
   </div>
@@ -24,22 +25,34 @@
   <div *ngIf="cameras_list" class="col-md-6 col-sm-6 col-6 row1-col">
     <mat-card class="toprow">
       <div class="col-md-12 centering-box width2">
-        <h1>{{ cameras_list }} </h1>
-        <small>Total Cameras</small>
-     <!--    <ngx-charts-linear-gauge 
+        <!-- <h1>{{ cameras_list }} </h1> -->
+        <!-- <small>Total Cameras</small> -->
+        <ngx-charts-linear-gauge 
           [view]="view1" 
           [scheme]="colorScheme" 
           [value]="cameras_list" 
           [max]="cameras_list"  
           [units]="'Total Cameras'"
           (select)="onSelect($event)">
-        </ngx-charts-linear-gauge> -->
+        </ngx-charts-linear-gauge>
       </div>
     </mat-card>
   </div>
+  <div class="row">
+    <!-- <mat-card> -->
+        <!-- <div class="col-md-12 centering-box width2"> -->
+            <ngx-charts-pie-grid 
+              [view]="view" 
+              [scheme]="colorScheme" 
+              [results]="status" 
+              (select)="onSelect($event)">
+            </ngx-charts-pie-grid>
+        <!-- </div> -->
+    <!-- </mat-card> -->
+  </div>
 </div>
 
-<mat-toolbar class="mt-2">Camera Categories</mat-toolbar>
+<mat-toolbar class="mt-2">Camera Units</mat-toolbar>
   <div class="mat-elevation-z8 col-md-12">
     <mat-table #table [dataSource]="dataSource">
 
@@ -58,7 +71,7 @@
   </div>
 
 <mat-card class="m-3">
-  <mat-toolbar> Add a new camera</mat-toolbar>
+  <mat-toolbar> Add a new unit</mat-toolbar>
   <form>
     <mat-form-field>
       <input matInput placeholder="Name" name="name" [(ngModel)]="newCamDetail.name">
