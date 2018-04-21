@@ -52,8 +52,12 @@
   <!-- </div> -->
 </div>
 
+<!-- <div class="float-right">
+  <button mat-raised-button #cmd (click)="lol()">Download as PDF</button>
+</div> -->
 <mat-toolbar class="mt-2">Camera Units</mat-toolbar>
-  <div class="mat-elevation-z8 col-md-12">
+
+  <div #content class="mat-elevation-z8 col-md-12">
     <mat-table #table [dataSource]="dataSource">
 
       <!-- Name Column -->

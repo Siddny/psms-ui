@@ -1,10 +1,11 @@
-import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 // import { status } from '../../../assets/json/status'
+import * as jsPDF from 'jspdf';
 
 
 @Component({
@@ -13,6 +14,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+
+  @ViewChild('cmd') cmd: any;
+  @ViewChild('content') content: any;
 
   view: any[] = [700, 400];
   view1: any[] = [175, 150];
@@ -97,6 +101,37 @@ export class MainComponent implements OnInit {
       "value": this.bad
     }
   ];
+
+  // downloadPDF(){
+  // const doc = new jsPDF();
+  // const specialElementHandlers = {
+  //     '#editor': function (element, renderer) {
+  //         return true;
+  //     }
+  // };
+
+  // this.cmd.click(function () {
+  //   doc.fromHTML(this.content.html(), 15, 15, {
+  //     'width': 170,
+  //     'elementHandlers': specialElementHandlers
+  //   });
+  // doc.save('sample-file.pdf');
+  // });    
+  // }
+
+// lol(){
+//   const doc = new jsPDF();
+//   const specialElementHandlers = {
+//     '#editor': function (element, renderer) {
+//       return true;
+//     }
+//   }
+//   doc.fromHTML(this.content, 15, 15, {
+//       'width': 170,
+//       'elementHandlers': specialElementHandlers
+//     });
+//   doc.save('sample-file.pdf');
+// }
 
   openCamTypeDialog(): void {
     let dialogRef = this.dialog.open(NewCamType, {
