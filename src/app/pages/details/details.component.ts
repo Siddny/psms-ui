@@ -19,6 +19,8 @@ export class DetailsComponent implements OnInit {
   my_list: any[]=[]
   id: any
   idvalue: any
+  cam_type_list: any[]=[]
+  cam_unit: any
 
   displayedColumns = ['name', 'model', 'p_serial_number', 'date_added', 'status'];
   dataSource: any;
@@ -36,6 +38,19 @@ export class DetailsComponent implements OnInit {
      }
 
   ngOnInit() {
+
+  this._services.getCameraType().subscribe(data=>{
+    this.cam_type_list = data;
+    console.log(data)
+
+    for (let item of data){
+      if (this.id == item.id) {
+        this.cam_unit = item.name
+        console.log(item.name)
+      }
+    }
+  })
+
 	this.route.params.subscribe(params=>{
 		this.id = params['id']
     	console.log(this.id)

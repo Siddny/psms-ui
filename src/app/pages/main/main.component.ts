@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+// import { status } from '../../../assets/json/status'
+
 
 @Component({
   selector: 'app-main',
@@ -22,9 +24,9 @@ export class MainComponent implements OnInit {
   showdiv: boolean= true
   newCamDetail: CameraDetail = new CameraDetail()
   cameras_list: any[]=[]
-  good: any
-  fair: any
-  bad: any
+  good: number
+  fair: number
+  bad: number
 
   displayedColumns = ['name'];
   dataSource: any;
@@ -62,7 +64,7 @@ export class MainComponent implements OnInit {
       this.cameras_list = data.length
       console.log(this.cameras_list)
       
-      let bad_cam: number = 0
+      let bad_cam = 0
       for (let items of data) if (items.status == "Bad") bad_cam++;
       console.log("bad "+bad_cam)
       this.bad = bad_cam
@@ -76,6 +78,7 @@ export class MainComponent implements OnInit {
       for (let items of data) if (items.status == "Good") good_cam++;
       console.log("good "+good_cam)
       this.good = good_cam
+      console.log(this.good)
 
     })
   }
