@@ -15,8 +15,7 @@
             [scheme]="colorScheme" 
             [value]="cam_type_list.length" 
             [max]="cam_type_list.length"  
-            [units]="'Total Camera Categories'"
-            (select)="onSelect($event)">
+            [units]="'Total Camera Categories'">
           </ngx-charts-linear-gauge>
       </div>
     </mat-card>
@@ -32,24 +31,23 @@
           [scheme]="colorScheme" 
           [value]="cameras_list" 
           [max]="cameras_list"  
-          [units]="'Total Cameras'"
-          (select)="onSelect($event)">
+          [units]="'Total Cameras'">
         </ngx-charts-linear-gauge>
       </div>
     </mat-card>
   </div>
-  <!-- <div class="row"> -->
-    <!-- <mat-card> -->
-        <!-- <div class="col-md-12 centering-box width2"> -->
-<!--             <ngx-charts-pie-grid 
-              [view]="view" 
-              [scheme]="colorScheme" 
-              [results]="status" 
-              (select)="onSelect($event)">
-            </ngx-charts-pie-grid> -->
-        <!-- </div> -->
-    <!-- </mat-card> -->
-  <!-- </div> -->
+  <div *ngIf="cameras_list" class="row m-3">
+    <mat-card>
+      <span style="color: white; float: left;"><b>Condition of Cameras</b></span>
+      <div class="col-md-12 centering-box width2">
+          <ngx-charts-pie-grid 
+            [view]="view" 
+            [scheme]="colorScheme" 
+            [results]="status">
+          </ngx-charts-pie-grid>
+      </div>
+    </mat-card>
+  </div>
 </div>
 
 <!-- <div class="float-right">
@@ -106,7 +104,7 @@
     </mat-form-field>
 
     <div>
-      <button (click)="newCameraDetail()" mat-raised-button style="background-color: #e3e3e3;">Save</button>
+      <button (click)="newCameraDetail();ngOnInit()" mat-raised-button style="background-color: #e3e3e3;"> <mat-icon>save</mat-icon> Save</button>
     </div>
   </form>
 </mat-card>

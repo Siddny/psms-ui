@@ -1,14 +1,23 @@
 .add{
   position: fixed;
-  bottom: 5%;
-  right: 5%;
+  bottom: 0%;
+  right: 0%;
   transform: translate(-50%, -50%);
   font-size: 20px;
   padding: 5px;
-  z-index: 100;
+  /*z-index: 100;*/
 }
 .add>mat-icon{
 	border-radius: 40%;
+}
+.go-back{
+  position: fixed;
+  top: 5%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  padding: 5px;
+  /*z-index: 100;*/
 }
 .example-headers-align .mat-expansion-panel-header-title, 
 .example-headers-align .mat-expansion-panel-header-description {
@@ -25,9 +34,13 @@
 .red{
 	flex-grow: 1;
 }
-.green{
-
+.half-width{
+  width: 50%;
 }
-.blue{
-		
+.full-width{
+  width: 100%;
+}
+mat-card{
+  width: calc(100%);
+  height: calc(100%);
 }

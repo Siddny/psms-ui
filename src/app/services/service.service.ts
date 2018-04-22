@@ -38,6 +38,15 @@ export class ServiceService {
     return this.http.get(url).map(response=>response.json())
   }
 
+  //delete camera type
+  DeleteCameraType(id){
+    let url = this.serverPath+'/delete_cam_type/'+id+'/'
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+    return this.http.delete(url, {headers:headers})
+  }
+
   //create camera details
   newCameraDetail(name:any){
     let url = this.serverPath+'/camera_detail_create/'

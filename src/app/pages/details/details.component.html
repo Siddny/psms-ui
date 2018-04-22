@@ -1,12 +1,42 @@
 <div class="add"> 
   <mat-chip-list>
-    <mat-chip  style="color:white;background-color: #28a745"> 
-      <mat-icon>playlist_add</mat-icon>
+    <mat-chip  style="color:white;background-color: #28a745" (click)="openCamUnitDialog()"> 
+      <mat-icon>add</mat-icon>
     </mat-chip>
 </mat-chip-list>
 </div>
 
-<mat-toolbar>Cameras | <small> {{ cam_unit}}</small></mat-toolbar>
+<div class="go-back"> 
+  <mat-chip-list>
+    <mat-chip  style="color:#28a745;background-color: white" routerLink=''> 
+      <mat-icon>fast_rewind</mat-icon>
+    </mat-chip>
+</mat-chip-list>
+</div>
+
+<div class="row mb-3">
+
+  <div class="col-md-6">
+    <mat-card>
+      Cameras | {{ cam_unit}}
+      <mat-chip-list class="float-right">
+        <mat-chip>
+          <small>
+            <mat-icon style="font-size: 15px;">create</mat-icon>
+            Edit
+          </small>
+        </mat-chip>
+        <mat-chip color="accent" (click)="deleteCamType(id)">
+          <small>
+            <mat-icon style="font-size: 15px;">delete</mat-icon>
+            Delete
+          </small>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card>
+  </div>
+  
+</div>
 
   <mat-accordion class="example-headers-align ">
     <mat-expansion-panel class="mat-elevation-z8">

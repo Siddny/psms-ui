@@ -49,6 +49,7 @@ import {
     DetailsComponent,
     CameraDetails,
     UpdateCameraDetails,
+    NewCamUnit,
     } from './pages/details/details.component';
 import { 
     MainComponent, 
@@ -66,6 +67,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NewCamType,
     CameraDetails,
     UpdateCameraDetails,
+    NewCamUnit,
   ],
   imports: [
     HttpClientModule,
@@ -105,6 +107,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NewCamType,
     CameraDetails,
     UpdateCameraDetails,
+    NewCamUnit,
   ]
 })
 export class AppModule { }

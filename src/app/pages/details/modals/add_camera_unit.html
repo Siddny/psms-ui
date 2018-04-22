@@ -1,0 +1,42 @@
+<!-- <mat-card class="m-3 addmat"> -->
+  <mat-toolbar> Add a new unit</mat-toolbar>
+  <form>
+    <div class="row">
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="Name" name="name" [(ngModel)]="newCamUnit.name">
+      </mat-form-field>
+
+      <mat-form-field class="col-md-6">
+        <input matInput placeholder="Model"  name="model" [(ngModel)]="newCamUnit.model">
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-md-12">
+        <input matInput placeholder="Serial Number"  name="p_serial_number" [(ngModel)]="newCamUnit.p_serial_number">
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-md-6">
+        <mat-select placeholder="Status" name="status" [(ngModel)]="newCamUnit.status">
+            <mat-option *ngFor="let name of choice_s" [value]="name.value">
+              {{ name.viewValue}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field> 
+
+      <mat-form-field class="col-md-6">
+        <mat-select placeholder="Camera Type" name="camera_type" [(ngModel)]="newCamUnit.camera_type">
+          <mat-option [value]="data.id">
+            {{ cam_unit }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div>
+      <button (click)="onNoClick();newCameraType()" mat-raised-button style="background-color: #e3e3e3;"> <mat-icon>save</mat-icon> Save</button>
+    </div>
+  </form>
+<!-- </mat-card> -->
