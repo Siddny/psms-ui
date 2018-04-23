@@ -35,10 +35,10 @@ export class DetailsComponent implements OnInit {
     public dialog: MatDialog,
     private ref: ChangeDetectorRef,
   	) {
-      // setInterval(() => {
-      // this.ngOnInit();
-      // this.ref.markForCheck();
-      //   }, 3000);
+      setInterval(() => {
+      this.ngOnInit();
+      this.ref.markForCheck();
+        }, 5000);
      }
 
   ngOnInit() {
@@ -76,7 +76,7 @@ export class DetailsComponent implements OnInit {
   openCamUnitDialog(): void {
     let dialogRef = this.dialog.open(NewCamUnit, {
       width: '600px',
-      data: { id: this.id, name: this.name},
+      data: { id: this.id, name: this.name },
     });
     dialogRef.afterClosed().subscribe(result => {
       //list camera types

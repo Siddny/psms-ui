@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableDataSource, MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 // import { status } from '../../../assets/json/status'
-import * as jsPDF from 'jspdf';
+// import * as jsPDF from 'jspdf';
 import { HostListener } from "@angular/core";
 import { Router } from '@angular/router';
 
@@ -19,6 +19,8 @@ export class MainComponent implements OnInit {
   @ViewChild('cmd') cmd: any;
   @ViewChild('content') content: any;
 
+  theme = 'dark';
+  // minWidth = [700]
   view: any[] = [];
   view1: any[] = [175, 150];
   colorScheme = {

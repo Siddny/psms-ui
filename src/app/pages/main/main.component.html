@@ -38,9 +38,10 @@
   </div>
   <div *ngIf="cameras_list" class="row m-3">
     <mat-card>
-      <span style="color: white; float: left;"><b>Condition of Cameras</b></span>
+      <span style="color: white !important; float: left;"><b>Condition of Cameras</b></span>
       <div class="col-md-12 centering-box width2">
           <ngx-charts-pie-grid 
+            [minWidth]="minWidth"
             [view]="view" 
             [scheme]="colorScheme" 
             [results]="status">
