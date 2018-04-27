@@ -70,7 +70,7 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <button mat-raised-button (click)="deleteCam(item.id)" style="color:white;background-color: #dc3545;">Delete</button>
-      <button mat-raised-button (click)="openCamUpdateDialog();update(item.id)" style="color:white;background-color: #28a745;">Edit</button>
+      <button mat-raised-button (click)="openCamUpdateDialog(item);update()" style="color:white;background-color: #28a745;">Edit</button>
 
     </mat-expansion-panel>
   </mat-accordion>

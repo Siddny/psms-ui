@@ -35,10 +35,10 @@ export class DetailsComponent implements OnInit {
     public dialog: MatDialog,
     private ref: ChangeDetectorRef,
   	) {
-      setInterval(() => {
-      this.ngOnInit();
-      this.ref.markForCheck();
-        }, 5000);
+      // setInterval(() => {
+      // this.ngOnInit();
+      // this.ref.markForCheck();
+      //   }, 5000);
      }
 
   ngOnInit() {
@@ -67,9 +67,10 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  openCamUpdateDialog(): void {
+  openCamUpdateDialog(item): void {
     let dialogRef = this.dialog.open(UpdateCameraDetails, {
       width: '800px',
+      data: {object: item}
     });
   }
 
@@ -104,11 +105,11 @@ export class DetailsComponent implements OnInit {
     console.log(id)
     this._services.DeleteCameraDetail(id).subscribe(data=>{
       console.log(data)
+      this.getCameraUnitsList();
     })
   }
 
   deleteCamType(id){
-    console.log(id)
     console.log(this.my_list.length)
     if(this.my_list.length == 0){
       this._services.DeleteCameraType(id).subscribe(data=>{
@@ -163,11 +164,10 @@ export class CameraDetails implements OnInit{
 
 export class UpdateCameraDetails implements OnInit{
 
-  @Input() myvalue: any
-
   id: any
-  camUpdate: CameraDetailUpdate = new CameraDetailUpdate()
   details: any[]=[]
+  updated_camera: CameraDetailUpdate = new CameraDetailUpdate()
+  cam_id = this.data.object.id
 
   constructor(
     private _services: ServiceService,
@@ -178,8 +178,9 @@ export class UpdateCameraDetails implements OnInit{
     ) { }
 
   ngOnInit(){
-
-    console.log(this.myvalue)
+    this.updated_camera = this.data.object
+    console.log(this.updated_camera)
+    console.log(this.cam_id)
     this.route.params.subscribe(params=>{
     this.id = params['id']
     console.log(this.id)
@@ -188,22 +189,26 @@ export class UpdateCameraDetails implements OnInit{
     //   console.log(this.details)
     // })
   })
-    this.getFinerdetails(this.myvalue)
+    this.getFinerdetails(this.cam_id)
   }
 
   getFinerdetails(myvalue){
-  this._services.getFinerDetails(this.myvalue).subscribe(data=>{
-    console.log(this.myvalue)
+  this._services.getFinerDetails(this.cam_id).subscribe(data=>{
+    console.log(this.cam_id)
     this.details = data
     console.log(this.details)
     })
   }
 
   updateCam(id){
-    this._services.PutCameraDetail(id).subscribe(data=>{
-      this.camUpdate = new CameraDetailUpdate()
-      console.log(this.camUpdate)
+    this._services.PutCameraDetail(this.cam_id, this.updated_camera).subscribe(data=>{
+      this.updated_camera = new CameraDetailUpdate()
+      console.log(this.updated_camera)
     })
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
 
