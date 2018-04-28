@@ -10,3 +10,6 @@ mat-toolbar{
   overflow: auto;
   max-height: 500px;
 }
+.main{
+	background-color: #000000;
+}

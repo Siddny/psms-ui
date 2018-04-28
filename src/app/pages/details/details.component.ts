@@ -25,8 +25,9 @@ export class DetailsComponent implements OnInit {
   idvalue: any
   cam_type_list: any[]=[]
   cam_unit: any
+  update_status: CameraDetailUpdate = new CameraDetailUpdate()
 
-  displayedColumns = ['name', 'model', 'p_serial_number', 'date_added', 'status'];
+  displayedColumns = ['name', 'model', 'p_serial_number', 'date_added', 'status', 'delete'];
   dataSource: any;
 
   constructor(
@@ -67,10 +68,10 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  openCamUpdateDialog(item): void {
+  openCamUpdateDialog(element): void {
     let dialogRef = this.dialog.open(UpdateCameraDetails, {
       width: '800px',
-      data: {object: item}
+      data: {object: element}
     });
   }
 
@@ -96,10 +97,19 @@ export class DetailsComponent implements OnInit {
       })
     })
   }
+
   update(id){
     this.idvalue = id
     // console.log(this.idvalue)
   }
+
+  // changeStatus(status){
+  //   this.update_status['camera_type'] = this.data.object.camera_type
+  //   this._services.putCameraDetail(id,this.update_status).subscribe(data=>{
+  //     this.update_status = new CameraDetailUpdate()
+  //     console.log(this.update_status)
+  //   })
+  // }
 
   deleteCam(id){
     console.log(id)
@@ -121,6 +131,12 @@ export class DetailsComponent implements OnInit {
       console.log("list is not empty")
     }
   }
+
+  choice_s = [
+    {value: 'Good', viewValue: 'Good'},
+    {value: 'Fair', viewValue: 'Fair'},
+    {value: 'Bad', viewValue: 'Bad'}
+  ];
 }
 
 @Component({
@@ -181,14 +197,6 @@ export class UpdateCameraDetails implements OnInit{
     this.updated_camera = this.data.object
     console.log(this.updated_camera)
     console.log(this.cam_id)
-    this.route.params.subscribe(params=>{
-    this.id = params['id']
-    console.log(this.id)
-    // this._services.getFinerDetails(this.id).subscribe(data=>{
-    //   this.details = data
-    //   console.log(this.details)
-    // })
-  })
     this.getFinerdetails(this.cam_id)
   }
 
@@ -201,7 +209,8 @@ export class UpdateCameraDetails implements OnInit{
   }
 
   updateCam(id){
-    this._services.PutCameraDetail(this.cam_id, this.updated_camera).subscribe(data=>{
+    this.updated_camera['camera_type'] = this.data.object.camera_type
+    this._services.putCameraDetail(this.cam_id, this.updated_camera).subscribe(data=>{
       this.updated_camera = new CameraDetailUpdate()
       console.log(this.updated_camera)
     })
@@ -210,6 +219,12 @@ export class UpdateCameraDetails implements OnInit{
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  choice_s = [
+    {value: 'Good', viewValue: 'Good'},
+    {value: 'Fair', viewValue: 'Fair'},
+    {value: 'Bad', viewValue: 'Bad'}
+  ];
 }
 
 
@@ -253,6 +268,7 @@ export class NewCamUnit implements OnInit{
   }
 
   newCameraType(){
+    this.newCamUnit['camera_type'] = this.data.id
     this._services.newCameraDetail(this.newCamUnit).subscribe(res=>{
     this.newCamUnit = new CameraUnit()
     console.log(this.newCamUnit)
