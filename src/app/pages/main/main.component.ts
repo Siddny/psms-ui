@@ -50,10 +50,11 @@ export class MainComponent implements OnInit {
     private router:Router,
     ) 
     {
-      // setInterval(() => {
-      // this.ngOnInit();
-      // this.ref.markForCheck();
-      // }, 1000);
+      setInterval(() => {
+      this.ngOnInit();
+      this.ref.markForCheck();
+      }, 1000);
+      
     Object.assign(this, {status})
 
     // this.screenHeight = (window.screen.height);
