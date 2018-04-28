@@ -108,7 +108,7 @@ export class ServiceService {
     })
   }
 
-  PutCameraDetail(id, updated_camera){
+  putCameraDetail(id, updated_camera){
     let url = this.serverPath+'/up/'+id+'/'
     let headers = new Headers({
       'Content-Type' : 'application/json',

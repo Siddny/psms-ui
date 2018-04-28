@@ -20,15 +20,15 @@
         </mat-select>
     </mat-form-field> 
 
-    <mat-form-field>
+<!--     <mat-form-field>
       <mat-select placeholder="Camera Type" name="camera_type" [(ngModel)]="updated_camera.camera_type">
         <mat-option *ngFor="let type of cam_type_list" [value]="type.id">
           {{ type.name }}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <div>
-      <button (click)="updateCam(item.id);onNoClick()" mat-raised-button style="background-color: #e3e3e3;"> <mat-icon>save</mat-icon> Save</button>
+      <button (click)="updateCam();onNoClick()" mat-raised-button style="background-color: #e3e3e3;"> <mat-icon>save</mat-icon> Save</button>
     </div>
   </form>

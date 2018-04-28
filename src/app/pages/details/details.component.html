@@ -38,7 +38,7 @@
   
 </div>
 
-  <mat-accordion class="example-headers-align ">
+<!--   <mat-accordion class="example-headers-align ">
     <mat-expansion-panel class="mat-elevation-z8">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -47,7 +47,6 @@
         <mat-panel-description>
             <span><b>P. Serial</b></span>
             <span><b>Model</b></span>
-            <!-- <mat-icon>account_circle</mat-icon> -->
             <span><b>Status</b></span>
             <span><b>Date added</b></span>
         </mat-panel-description>
@@ -59,56 +58,76 @@
     <mat-expansion-panel  *ngFor="let item of my_list" class="mat-elevation-z8">
       <mat-expansion-panel-header>
         <mat-panel-title>
-            <span>{{ item.name }}</span>
+          <span>{{ item.name }}</span>
         </mat-panel-title>
         <mat-panel-description>
-            <span>{{ item.p_serial_number }}</span>
-            <span>{{ item.model }}</span>
-            <!-- <mat-icon>account_circle</mat-icon> -->
-            <span>{{ item.status }}</span>
-            <span>{{ item.date_added }}</span>
+          <span>{{ item.p_serial_number }}</span>
+          <span>{{ item.model }}</span>
+          <span>{{ item.status }}</span>
+          <span>{{ item.date_added }}</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
       <button mat-raised-button (click)="deleteCam(item.id)" style="color:white;background-color: #dc3545;">Delete</button>
       <button mat-raised-button (click)="openCamUpdateDialog(item);update()" style="color:white;background-color: #28a745;">Edit</button>
-
     </mat-expansion-panel>
-  </mat-accordion>
+  </mat-accordion> -->
 
-<!-- <div class="mat-elevation-z8">
+<div class="mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
-    Name Column
+    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
 
-    Model Column
+    <!-- Model Column -->
     <ng-container matColumnDef="model">
       <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
     </ng-container>
 
-    Protel Serial Number Column
+    <!-- Protel Serial Number Column -->
     <ng-container matColumnDef="p_serial_number">
       <mat-header-cell *matHeaderCellDef> P.Serial </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.p_serial_number}} </mat-cell>
     </ng-container>
 
-    Date Added Column
+    <!-- Date Added Column -->
     <ng-container matColumnDef="date_added">
       <mat-header-cell *matHeaderCellDef> Date Added </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.date_added}} </mat-cell>
     </ng-container>
 
-    Status Column
+    <!-- Status Column -->
     <ng-container matColumnDef="status">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
     </ng-container>
 
+    <!-- Detele Column -->
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+          <mat-chip-list class="float-right">
+            <mat-chip (click)="openCamUpdateDialog(element);update()" style="color:white;background-color: #28a745;">
+              <small>
+                <mat-icon style="font-size: 15px;">create</mat-icon>
+                Edit
+              </small>
+            </mat-chip>
+            <mat-chip (click)="deleteCam(element.id)" style="color:white;background-color: #dc3545;">
+              <small>
+                <mat-icon style="font-size: 15px;">delete</mat-icon>
+                Delete
+              </small>
+            </mat-chip>
+          </mat-chip-list>
+      </mat-cell>
+    </ng-container>
+
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-</div> -->
+</div>
