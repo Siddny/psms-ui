@@ -18,7 +18,6 @@ import { MatButtonModule }   from '@angular/material/button';
 import { MatInputModule }    from '@angular/material';
 import { MatChipsModule } from '@angular/material/chips';
 
-
 import { MatExpansionModule }from '@angular/material/expansion';
 import { MatDatepickerModule }from '@angular/material/datepicker';
 import { MatSelectModule }   from '@angular/material/select';
@@ -58,6 +57,8 @@ import {
 
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+import { htmlToPdfSave } from 'angular-save-html-to-pdf';
 
 @NgModule({ 
   declarations: [
