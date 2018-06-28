@@ -30,6 +30,12 @@ export class DetailsComponent implements OnInit {
   displayedColumns = ['name', 'model', 'p_serial_number', 'date_added', 'status', 'delete'];
   dataSource: any;
 
+  choice_s = [
+    {value: 'Good', viewValue: 'Good'},
+    {value: 'Fair', viewValue: 'Fair'},
+    {value: 'Bad', viewValue: 'Bad'}
+  ];
+  
   constructor(
   	private _services: ServiceService,
   	private route: ActivatedRoute,
@@ -60,30 +66,6 @@ export class DetailsComponent implements OnInit {
       }
     })
 
-  }
-
-  openCamDetailsDialog(): void {
-    let dialogRef = this.dialog.open(CameraDetails, {
-      width: '600px',
-    });
-  }
-
-  openCamUpdateDialog(element): void {
-    let dialogRef = this.dialog.open(UpdateCameraDetails, {
-      width: '800px',
-      data: {object: element}
-    });
-  }
-
-  openCamUnitDialog(): void {
-    let dialogRef = this.dialog.open(NewCamUnit, {
-      width: '600px',
-      data: { id: this.id, name: this.name },
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      //list camera types
-      this.getCameraUnitsList()
-    });
   }
 
   getCameraUnitsList(){
@@ -132,11 +114,29 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  choice_s = [
-    {value: 'Good', viewValue: 'Good'},
-    {value: 'Fair', viewValue: 'Fair'},
-    {value: 'Bad', viewValue: 'Bad'}
-  ];
+  openCamDetailsDialog(): void {
+    let dialogRef = this.dialog.open(CameraDetails, {
+      width: '600px',
+    });
+  }
+
+  openCamUpdateDialog(element): void {
+    let dialogRef = this.dialog.open(UpdateCameraDetails, {
+      width: '800px',
+      data: {object: element}
+    });
+  }
+
+  openCamUnitDialog(): void {
+    let dialogRef = this.dialog.open(NewCamUnit, {
+      width: '600px',
+      data: { id: this.id, name: this.name },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      //list camera types
+      this.getCameraUnitsList()
+    });
+  }
 }
 
 @Component({

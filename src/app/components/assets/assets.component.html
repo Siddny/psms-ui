@@ -1,0 +1,200 @@
+<div class="container-fluid">
+	<mat-toolbar color="primary">EMPLOYEES</mat-toolbar>
+	<mat-card>
+		<mat-toolbar>Add New Employee</mat-toolbar>
+		<form>
+			<mat-form-field>
+				<input matInput placeholder="First name" name="first_name" [(ngModel)]="new_emp.first_name">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Last name" name="last_name" [(ngModel)]="new_emp.last_name">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Department" name="department" [(ngModel)]="new_emp.department">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Designation" name="designation" [(ngModel)]="new_emp.designation">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Email" name="email" [(ngModel)]="new_emp.email">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Phone" name="phone_number" [(ngModel)]="new_emp.phone_number">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Id Number" name="id_number" [(ngModel)]="new_emp.id_number">
+			</mat-form-field>
+			<div>
+				<button mat-raised-button color="primary" (click)="newEmployee();">Save</button>
+			</div>
+		</form>
+	</mat-card>
+	<mat-card>
+	  <div class="mat-elevation-z8">
+	    <mat-table #table [dataSource]="emp_dataSource">
+
+	      <!-- Name Column -->
+	      <ng-container matColumnDef="name">
+	        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.first_name}}  {{element.last_name}}</mat-cell>
+	      </ng-container>
+
+	      <!-- Email Column -->
+	      <ng-container matColumnDef="email">
+	        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+	        <mat-cell *matCellDef="let element">
+	        	<a href="mailto:{{element.email}}">
+	        		{{element.email}}
+	        	</a>
+	        </mat-cell>
+	      </ng-container>
+
+	      <!-- Phone Number Column -->
+	      <ng-container matColumnDef="phone_number">
+	        <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+	        <mat-cell *matCellDef="let element">
+	        	<a href="tel:{{element.phone_number}}">
+	        		{{element.phone_number}}
+	        	</a>
+	        </mat-cell>
+	      </ng-container>
+
+	      <!-- ID Number Column -->
+	      <ng-container matColumnDef="id_number">
+	        <mat-header-cell *matHeaderCellDef> ID Number </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.id_number}} </mat-cell>
+	      </ng-container>
+
+	      <!-- Department Column -->
+	      <ng-container matColumnDef="department">
+	        <mat-header-cell *matHeaderCellDef> Department </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.department}} </mat-cell>
+	      </ng-container>
+
+	      <!-- Designation Column -->
+	      <ng-container matColumnDef="designation">
+	        <mat-header-cell *matHeaderCellDef> Designation </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.designation}} </mat-cell>
+	      </ng-container>
+
+	      <mat-header-row *matHeaderRowDef="emp_displayedColumns"></mat-header-row>
+	      <mat-row *matRowDef="let row; columns: emp_displayedColumns;"></mat-row>
+	    </mat-table>
+	  </div>
+	</mat-card>
+
+	<mat-toolbar color="primary">EQUIPMENTS</mat-toolbar>
+	<mat-card>
+		<mat-toolbar>Add New Equipment</mat-toolbar>
+		<form>
+			<mat-form-field>
+				<input matInput placeholder="Label" name="label" [(ngModel)]="new_eq.label">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Type" name="type" [(ngModel)]="new_eq.type">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Brand" name="brand" [(ngModel)]="new_eq.brand">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Model" name="model" [(ngModel)]="new_eq.model">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Status" name="status" [(ngModel)]="new_eq.status">
+			</mat-form-field>
+			<mat-form-field>
+				<input matInput placeholder="Serial Number" name="serial_number" [(ngModel)]="new_eq.serial_number">
+			</mat-form-field>
+			<div>
+				<button mat-raised-button color="primary" (click)="newEquipment();">Save</button>
+			</div>
+		</form>
+	</mat-card>
+	<mat-card>
+	  <div class="mat-elevation-z8">
+	    <mat-table #table [dataSource]="eq_dataSource">
+
+	      <!-- Label Column -->
+	      <ng-container matColumnDef="label">
+	        <mat-header-cell *matHeaderCellDef> Label </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.label}}</mat-cell>
+	      </ng-container>
+
+	      <!-- Type Column -->
+	      <ng-container matColumnDef="type">
+	        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+	      </ng-container>
+
+	      <!-- Brand Column -->
+	      <ng-container matColumnDef="brand">
+	        <mat-header-cell *matHeaderCellDef> Brand </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.brand}} </mat-cell>
+	      </ng-container>
+
+	      <!-- Model Column -->
+	      <ng-container matColumnDef="model">
+	        <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
+	      </ng-container>
+
+	      <!-- Status Column -->
+	      <ng-container matColumnDef="status">
+	        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+	      </ng-container>
+
+		  <!-- Serial Number Column -->
+	      <ng-container matColumnDef="serial_number">
+	        <mat-header-cell *matHeaderCellDef> Serial Number </mat-header-cell>
+	        <mat-cell *matCellDef="let element"> {{element.serial_number}} </mat-cell>
+	      </ng-container>
+
+	      <mat-header-row *matHeaderRowDef="eq_displayedColumns"></mat-header-row>
+	      <mat-row *matRowDef="let row; columns: eq_displayedColumns;"></mat-row>
+	    </mat-table>
+	  </div>
+	</mat-card>
+
+	<mat-toolbar color="primary">Assign Equpment to Employee</mat-toolbar>
+	<form>
+		<mat-form-field>
+		  <mat-select placeholder="Select Empoyee" name="emp_" [(ngModel)]="new_assign.emp_">
+		    <mat-option *ngFor="let emp of emp_list" [value]="emp.id">
+		      {{ emp.first_name }} {{ emp.last_name }}
+		    </mat-option>
+		  </mat-select>
+		</mat-form-field>
+		<mat-form-field>
+		  <mat-select placeholder="Select Equipment" [formControl]="eq_options" multiple name="eq_" [(ngModel)]="new_assign.eq_">
+			<mat-select-trigger>
+			  {{eq_options.value ? eq_options.value[0] : ''}}
+			  <span *ngIf="eq_options.value?.length > 1" class="additional-selection">
+			    (+{{eq_options.value.length - 1}} others)
+			  </span>
+			</mat-select-trigger>			
+		    <mat-option *ngFor="let eq of eq_list" [value]="eq.id">
+		      {{ eq.type }} {{ eq.brand }} <small class="float-right"> {{ eq.label }}  </small>
+		    </mat-option>
+		  </mat-select>
+		</mat-form-field>
+		<div>
+			<button mat-raised-button color="primary" (click)="newAssign();">Save</button>
+		</div>
+	</form>
+	<div class="row">
+		<mat-card *ngFor="let item of assign_list" class="col-md-12 m-1">
+			<span><h5>{{item.employee.first_name}} {{item.employee.last_name}} <small> {{item.employee.department}}</small></h5></span>
+			<hr>
+			<div *ngFor="let eqs of item.equipments">
+				<div>
+					<span>Label: {{eqs.label}}</span>
+					<span>Model: {{eqs.model}}</span>
+					<span>Serial Number: {{eqs.serial_number}}</span>
+					<span>Type: {{eqs.type}}</span>
+					<hr>
+				</div>
+			</div>
+		</mat-card>
+	</div>
+</div>

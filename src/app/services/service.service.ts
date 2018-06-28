@@ -8,6 +8,10 @@ const httpOptions = {
     headers: new Headers({ 'Content-Type': 'application/json' })
 };
 
+const headers = new Headers({
+      'Content-Type' : 'application/json',
+    });
+
 @Injectable()
 export class ServiceService {
 
@@ -18,9 +22,6 @@ export class ServiceService {
   // create new type of camera
   newCameraType(name:any){
   	let url = this.serverPath+'/new_type/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
   	return this.http.post(url , JSON.stringify(name), {headers : headers})
   }
 
@@ -32,54 +33,36 @@ export class ServiceService {
 
   listCategory(id) {
     let url = this.serverPath+'/camera_types/'+id+'/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.get(url).map(response=>response.json())
   }
 
   //delete camera type
   DeleteCameraType(id){
     let url = this.serverPath+'/delete_cam_type/'+id+'/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.delete(url, {headers:headers})
   }
 
   //create camera details
   newCameraDetail(name:any){
     let url = this.serverPath+'/camera_detail_create/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.post(url, JSON.stringify(name), {headers: headers})
   }
   
   //ya keegan 
   addCameraDetail(name:any){
     let url = this.serverPath+'/camera_detail_add/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.post(url, JSON.stringify(name), {headers: headers})
   }
 
   //get all cameras
   getAllCam(){
     let url = this.serverPath+'/camera_detail/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.get(url).map(response=>response.json())
   }
 
   //get camera details per camera category id
   getCameraDetails(id){
     let url = this.serverPath+'/camera_detail/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.get(url).map(response=>{
       let data = response.json().filter(item=>{
         if (item.camera_type == id) {
@@ -94,9 +77,6 @@ export class ServiceService {
   //get Finer Details 
   getFinerDetails(id){
     let url = this.serverPath+'/camera_detail/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.get(url).map(response=>{
       let data = response.json().filter(item=>{
         if (item.id == id) {
@@ -110,17 +90,11 @@ export class ServiceService {
 
   putCameraDetail(id, updated_camera){
     let url = this.serverPath+'/up/'+id+'/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.put(url, JSON.stringify(updated_camera), {headers:headers})
   }
 
   DeleteCameraDetail(id){
     let url = this.serverPath+'/del/'+id+'/'
-    let headers = new Headers({
-      'Content-Type' : 'application/json',
-    });
     return this.http.delete(url, {headers:headers})
   }
 }

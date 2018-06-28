@@ -39,7 +39,10 @@ import { AppComponent } from './app.component';
 
 import { routing } from './app.routing';
 
+//services
 import { ServiceService } from './services/service.service';
+import { AssetsService } from './services/assets/assets.service';
+
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,8 +60,9 @@ import {
 
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AssetsComponent } from './components/assets/assets.component';
 
-import { htmlToPdfSave } from 'angular-save-html-to-pdf';
+// import { htmlToPdfSave } from 'angular-save-html-to-pdf';
 
 @NgModule({ 
   declarations: [
@@ -69,6 +73,7 @@ import { htmlToPdfSave } from 'angular-save-html-to-pdf';
     CameraDetails,
     UpdateCameraDetails,
     NewCamUnit,
+    AssetsComponent,
   ],
   imports: [
     HttpClientModule,
@@ -99,6 +104,7 @@ import { htmlToPdfSave } from 'angular-save-html-to-pdf';
   ],
   providers: [ 
     ServiceService,
+    AssetsService,
   ],
   bootstrap: [AppComponent],
   schemas:[ 

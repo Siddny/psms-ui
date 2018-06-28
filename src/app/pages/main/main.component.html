@@ -1,111 +1,113 @@
-<!-- <mat-toolbar>Protel Demo</mat-toolbar> -->
-<h3 class="mt-2">Cameras</h3>
+<div class="container-fluid">
+  <!-- <mat-toolbar>Protel Demo</mat-toolbar> -->
+  <h3 class="mt-2">Cameras</h3>
 
-<div class="row dashbrd">
-  <div *ngIf="showdiv" class="col-md-6 col-sm-6 col-6 row1-col">
-    <mat-card class="toprow">
-      <div class="col-md-12 centering-box width2">
-        <!-- <h1>{{ cam_type_list.length }}</h1> -->
-        <!-- <small>Total Camera Units</small> -->
+  <div class="row dashbrd">
+    <div *ngIf="showdiv" class="col-md-6 col-sm-6 col-6 row1-col">
+      <mat-card class="row toprow">
+        <div class="col-md-12 centering-box">
+          <!-- <h1>{{ cam_type_list.length }}</h1> -->
+          <!-- <small>Total Camera Units</small> -->
 
-          <!-- [min]="0" 
-          [previousValue]="80" -->
+            <!-- [min]="0" 
+            [previousValue]="80" -->
+            <ngx-charts-linear-gauge 
+              [view]="view1" 
+              [scheme]="colorScheme" 
+              [value]="cam_type_list.length" 
+              [max]="cam_type_list.length"  
+              [units]="'Total Camera Categories'">
+            </ngx-charts-linear-gauge>
+        </div>
+      </mat-card>
+    </div>
+
+    <div *ngIf="cameras_list" class="col-md-6 col-sm-6 col-6 row1-col">
+      <mat-card class="row toprow">
+        <div class="col-md-12 centering-box">
+          <!-- <h1>{{ cameras_list }} </h1> -->
+          <!-- <small>Total Cameras</small> -->
           <ngx-charts-linear-gauge 
             [view]="view1" 
             [scheme]="colorScheme" 
-            [value]="cam_type_list.length" 
-            [max]="cam_type_list.length"  
-            [units]="'Total Camera Categories'">
+            [value]="cameras_list" 
+            [max]="cameras_list"  
+            [units]="'Total Cameras'">
           </ngx-charts-linear-gauge>
-      </div>
-    </mat-card>
-  </div>
-
-  <div *ngIf="cameras_list" class="col-md-6 col-sm-6 col-6 row1-col">
-    <mat-card class="toprow">
-      <div class="col-md-12 centering-box width2">
-        <!-- <h1>{{ cameras_list }} </h1> -->
-        <!-- <small>Total Cameras</small> -->
-        <ngx-charts-linear-gauge 
-          [view]="view1" 
-          [scheme]="colorScheme" 
-          [value]="cameras_list" 
-          [max]="cameras_list"  
-          [units]="'Total Cameras'">
-        </ngx-charts-linear-gauge>
-      </div>
-    </mat-card>
-  </div>
-  <div *ngIf="cameras_list" class="row m-3">
-    <mat-card>
-      <span style="color: white !important; float: left;"><b>Condition of Cameras</b></span>
-      <div class="col-md-12 centering-box width2">
-          <ngx-charts-pie-grid 
-            [minWidth]="minWidth"
-            [view]="view" 
-            [scheme]="colorScheme" 
-            [results]="status">
-          </ngx-charts-pie-grid>
-      </div>
-    </mat-card>
-  </div>
-</div>
-
-<!-- <div class="float-right">
-  <button mat-raised-button #cmd (click)="lol()">Download as PDF</button>
-</div> -->
-<mat-toolbar class="mt-2">Camera Units</mat-toolbar>
-
-  <div #content class="mat-elevation-z8 col-md-12">
-    <mat-table #table [dataSource]="dataSource">
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell routerLink="/camera/{{element.id}}" *matCellDef="let element"> {{element.name}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-    <div class="col-md-12" style="color: white;background-color: #28a745;" (click)="openCamTypeDialog()">
-      <small>Add</small>
+        </div>
+      </mat-card>
+    </div>
+    <div *ngIf="cameras_list" class=" m-3">
+      <mat-card class="row">
+        <span style="color: white !important; float: left;"><b>Condition of Cameras</b></span>
+        <div class="col-md-12 centering-box">
+            <ngx-charts-pie-grid 
+              [minWidth]="minWidth"
+              [view]="view" 
+              [scheme]="colorScheme" 
+              [results]="status">
+            </ngx-charts-pie-grid>
+        </div>
+      </mat-card>
     </div>
   </div>
 
-<mat-card class="m-3">
-  <mat-toolbar> Add a new unit</mat-toolbar>
-  <form>
-    <mat-form-field>
-      <input matInput placeholder="Name" name="name" [(ngModel)]="newCamDetail.name">
-    </mat-form-field>
+  <!-- <div class="float-right">
+    <button mat-raised-button #cmd (click)="lol()">Download as PDF</button>
+  </div> -->
+  <mat-toolbar class="mt-2">Camera Units</mat-toolbar>
 
-    <mat-form-field>
-      <input matInput placeholder="Model"  name="model" [(ngModel)]="newCamDetail.model">
-    </mat-form-field>
+    <div #content class="mat-elevation-z8 col-md-12">
+      <mat-table #table [dataSource]="dataSource">
 
-    <mat-form-field>
-      <input matInput placeholder="Serial Number"  name="p_serial_number" [(ngModel)]="newCamDetail.p_serial_number">
-    </mat-form-field>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell routerLink="/camera/{{element.id}}" *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
 
-    <mat-form-field>
-      <mat-select placeholder="Status" name="status" [(ngModel)]="newCamDetail.status">
-          <mat-option *ngFor="let name of choice_s" [value]="name.value">
-            {{ name.viewValue}}
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <div class="col-md-12" style="color: white;background-color: #28a745;" (click)="openCamTypeDialog()">
+        <small>Add</small>
+      </div>
+    </div>
+
+  <mat-card class="m-3">
+    <mat-toolbar> Add a new unit</mat-toolbar>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Name" name="name" [(ngModel)]="newCamDetail.name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Model"  name="model" [(ngModel)]="newCamDetail.model">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Serial Number"  name="p_serial_number" [(ngModel)]="newCamDetail.p_serial_number">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Status" name="status" [(ngModel)]="newCamDetail.status">
+            <mat-option *ngFor="let name of choice_s" [value]="name.value">
+              {{ name.viewValue}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field> 
+
+      <mat-form-field>
+        <mat-select placeholder="Camera Type" name="camera_type" [(ngModel)]="newCamDetail.camera_type">
+          <mat-option *ngFor="let type of cam_type_list" [value]="type.id">
+            {{ type.name }}
           </mat-option>
         </mat-select>
-    </mat-form-field> 
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-select placeholder="Camera Type" name="camera_type" [(ngModel)]="newCamDetail.camera_type">
-        <mat-option *ngFor="let type of cam_type_list" [value]="type.id">
-          {{ type.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <div>
-      <button (click)="newCameraDetail();ngOnInit()" mat-raised-button style="background-color: #e3e3e3;"> <mat-icon>save</mat-icon> Save</button>
-    </div>
-  </form>
-</mat-card>
+      <div>
+        <button (click)="newCameraDetail();ngOnInit()" mat-raised-button style="background-color: #e3e3e3;"> <mat-icon>save</mat-icon> Save</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
