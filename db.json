@@ -1,0 +1,17 @@
+{
+  "cameras": [
+    {
+      "name": "sdf",
+      "id": 1
+    }
+  ],
+  "items": [
+    {
+      "name": "name",
+      "details": "details",
+      "model": "model123",
+      "serial_number": "098908j",
+      "id": 1
+    }
+  ]
+}

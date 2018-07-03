@@ -91,7 +91,7 @@
 				<input matInput placeholder="Label" name="label" [(ngModel)]="new_eq.label">
 			</mat-form-field>
 			<mat-form-field>
-				<input matInput placeholder="Type" name="type" [(ngModel)]="new_eq.type">
+				<input matInput placeholder="Type" name="_type" [(ngModel)]="new_eq._type">
 			</mat-form-field>
 			<mat-form-field>
 				<input matInput placeholder="Brand" name="brand" [(ngModel)]="new_eq.brand">
@@ -121,9 +121,9 @@
 	      </ng-container>
 
 	      <!-- Type Column -->
-	      <ng-container matColumnDef="type">
+	      <ng-container matColumnDef="_type">
 	        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-	        <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+	        <mat-cell *matCellDef="let element"> {{element._type}} </mat-cell>
 	      </ng-container>
 
 	      <!-- Brand Column -->
@@ -156,25 +156,25 @@
 	  </div>
 	</mat-card>
 
-	<mat-toolbar color="primary">Assign Equpment to Employee</mat-toolbar>
+	<mat-toolbar color="primary">Assign Equipment to Employee</mat-toolbar>
 	<form>
 		<mat-form-field>
-		  <mat-select placeholder="Select Empoyee" name="emp_" [(ngModel)]="new_assign.emp_">
+		  <mat-select placeholder="Select Empoyee" name="employee" [(ngModel)]="new_assign.employee">
 		    <mat-option *ngFor="let emp of emp_list" [value]="emp.id">
 		      {{ emp.first_name }} {{ emp.last_name }}
 		    </mat-option>
 		  </mat-select>
 		</mat-form-field>
 		<mat-form-field>
-		  <mat-select placeholder="Select Equipment" [formControl]="eq_options" multiple name="eq_" [(ngModel)]="new_assign.eq_">
+		  <mat-select placeholder="Select Equipment" [formControl]="eq_options" multiple name="tools" [(ngModel)]="new_assign.tools">
 			<mat-select-trigger>
 			  {{eq_options.value ? eq_options.value[0] : ''}}
 			  <span *ngIf="eq_options.value?.length > 1" class="additional-selection">
 			    (+{{eq_options.value.length - 1}} others)
 			  </span>
-			</mat-select-trigger>			
+			</mat-select-trigger>		
 		    <mat-option *ngFor="let eq of eq_list" [value]="eq.id">
-		      {{ eq.type }} {{ eq.brand }} <small class="float-right"> {{ eq.label }}  </small>
+		      {{ eq._type }} {{ eq.brand }} <small class="float-right"> {{ eq.label }}  </small>
 		    </mat-option>
 		  </mat-select>
 		</mat-form-field>
@@ -186,15 +186,15 @@
 		<mat-card *ngFor="let item of assign_list" class="col-md-12 m-1">
 			<span><h5>{{item.employee.first_name}} {{item.employee.last_name}} <small> {{item.employee.department}}</small></h5></span>
 			<hr>
-			<div *ngFor="let eqs of item.equipments">
+			<!-- <div *ngFor="let eqs of item.equipments">
 				<div>
 					<span>Label: {{eqs.label}}</span>
 					<span>Model: {{eqs.model}}</span>
 					<span>Serial Number: {{eqs.serial_number}}</span>
-					<span>Type: {{eqs.type}}</span>
+					<span>Type: {{eqs._type}}</span>
 					<hr>
 				</div>
-			</div>
+			</div> -->
 		</mat-card>
 	</div>
 </div>

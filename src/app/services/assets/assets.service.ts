@@ -12,7 +12,7 @@ const headers = new Headers({
 @Injectable()
 export class AssetsService {
 
-  public serverPath: string = AppConst.localPath
+  public serverPath: string = AppConst.serverPath
 
   constructor(private http: Http) { }
 
@@ -37,12 +37,12 @@ export class AssetsService {
   }
 
   newAssign(assign:any){
-  	let url = this.serverPath+'/assign/'
+  	let url = this.serverPath+'/assign_tool/'
   	return this.http.post(url , JSON.stringify(assign), {headers : headers})
   }
 
   getAssign(){
-  	let url = this.serverPath+'/assign/'
+  	let url = this.serverPath+'/assign_tool/'
   	return this.http.get(url, {headers : headers}).map(response=> response.json());
   }
 }

@@ -1,0 +1,17 @@
+<mat-toolbar>Add New Camera Unit</mat-toolbar>
+
+<form>
+	<mat-form-field class="full-width">
+		<input matInput placeholder="Name" name="name" [(ngModel)]="new_ept.name">
+	</mat-form-field>
+	<mat-form-field class="full-width">
+		<input matInput placeholder="Details" name="details" [(ngModel)]="new_ept.details">
+	</mat-form-field>
+	<mat-form-field class="full-width">
+		<input matInput placeholder="Model" name="model" [(ngModel)]="new_ept.model">
+	</mat-form-field>
+	<mat-form-field class="full-width">
+		<input matInput placeholder="Serial Number" name="serial_number" [(ngModel)]="new_ept.serial_number">
+	</mat-form-field>
+	<button mat-raised-button (click)="newEqt()" style="background-color: #e3e3e3;"> <mat-icon>save</mat-icon> Save</button>
+</form>
