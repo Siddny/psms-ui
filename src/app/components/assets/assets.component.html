@@ -91,7 +91,7 @@
 				<input matInput placeholder="Label" name="label" [(ngModel)]="new_eq.label">
 			</mat-form-field>
 			<mat-form-field>
-				<input matInput placeholder="Type" name="_type" [(ngModel)]="new_eq._type">
+				<input matInput placeholder="Type" name="equipment_type" [(ngModel)]="new_eq.equipment_type">
 			</mat-form-field>
 			<mat-form-field>
 				<input matInput placeholder="Brand" name="brand" [(ngModel)]="new_eq.brand">
@@ -121,9 +121,9 @@
 	      </ng-container>
 
 	      <!-- Type Column -->
-	      <ng-container matColumnDef="_type">
+	      <ng-container matColumnDef="equipment_type">
 	        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-	        <mat-cell *matCellDef="let element"> {{element._type}} </mat-cell>
+	        <mat-cell *matCellDef="let element"> {{element.equipment_type}} </mat-cell>
 	      </ng-container>
 
 	      <!-- Brand Column -->
@@ -174,7 +174,7 @@
 			  </span>
 			</mat-select-trigger>		
 		    <mat-option *ngFor="let eq of eq_list" [value]="eq.id">
-		      {{ eq._type }} {{ eq.brand }} <small class="float-right"> {{ eq.label }}  </small>
+		      {{ eq.equipment_type }} {{ eq.brand }} <small class="float-right"> {{ eq.label }}  </small>
 		    </mat-option>
 		  </mat-select>
 		</mat-form-field>
@@ -191,7 +191,7 @@
 					<span>Label: {{eqs.label}}</span>
 					<span>Model: {{eqs.model}}</span>
 					<span>Serial Number: {{eqs.serial_number}}</span>
-					<span>Type: {{eqs._type}}</span>
+					<span>Type: {{eqs.equipment_type}}</span>
 					<hr>
 				</div>
 			</div> -->

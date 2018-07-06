@@ -61,6 +61,7 @@ import {
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AssetsComponent } from './components/assets/assets.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 // import { htmlToPdfSave } from 'angular-save-html-to-pdf';
 
@@ -74,6 +75,7 @@ import { AssetsComponent } from './components/assets/assets.component';
     UpdateCameraDetails,
     NewCamUnit,
     AssetsComponent,
+    ProjectsComponent,
   ],
   imports: [
     HttpClientModule,

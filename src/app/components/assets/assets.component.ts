@@ -19,7 +19,7 @@ export class AssetsComponent implements OnInit {
   new_eq : Equipment = new Equipment();
   eq_dataSource: any;
   eq_list: any[]=[];
-  eq_displayedColumns = ['label', '_type', 'brand', 'model', 'status', 'serial_number']; 
+  eq_displayedColumns = ['label', 'equipment_type', 'brand', 'model', 'status', 'serial_number']; 
   
   eq_options = new FormControl();
 
@@ -139,7 +139,7 @@ export class Equipment{
 	model: any;
 	status: any;
 	serial_number: any;
-  _type: any;
+  equipment_type: any;
 }
 
 export class Assign{

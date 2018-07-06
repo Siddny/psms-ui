@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { AssetsComponent } from './components/assets/assets.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 const appRoute: Routes = [
 	{
@@ -22,6 +23,10 @@ const appRoute: Routes = [
 	{
 		path: 'assets',
 		component: AssetsComponent,
+	},
+	{
+		path: 'projects',
+		component: ProjectsComponent,
 	},
 ]
 

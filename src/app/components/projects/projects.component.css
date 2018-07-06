@@ -1,0 +1,14 @@
+.card {
+  /*max-width: 400px;*/
+}
+.body{
+	text-align: left;
+	align-content: left;
+	height: 91vh;
+}
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+.spacer {
+  flex: 1 1 auto;
+}
