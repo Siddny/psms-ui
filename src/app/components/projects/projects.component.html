@@ -8,7 +8,7 @@
 					<h4>Projects</h4>
 					<span class="spacer"></span>
 					<mat-chip-list>
-					  <mat-chip (click)="openNewErpApplicationDialog()" style="background-color: #d7d652;">
+					  <mat-chip (click)="openProjectDialog()" style="background-color: #d7d652;">
 					  	<mat-icon>add</mat-icon>
 					  </mat-chip>
 					</mat-chip-list>
@@ -19,12 +19,12 @@
 				<mat-list>
 				  <!-- <h3 mat-subheader>Folders</h3> -->
 				  <mat-divider></mat-divider>
-				  <mat-list-item>
+				  <mat-list-item routerLink="/project">
 				    <mat-icon mat-list-icon>folder</mat-icon>
 				    <h4 mat-line>folder.name</h4>
 				  </mat-list-item>
 				  <mat-divider></mat-divider>
-				  <mat-list-item>
+				  <mat-list-item routerLink="/project">
 				    <mat-icon mat-list-icon>folder</mat-icon>
 				    <h4 mat-line>folder.name</h4>
 				  </mat-list-item>

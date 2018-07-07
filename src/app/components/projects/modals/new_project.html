@@ -1,0 +1,26 @@
+<div class="container">
+	<mat-toolbar style="background-color: #d7d652;">New Project</mat-toolbar>
+	<form class="row">
+		<mat-form-field class="col-md-12">
+			<input matInput placeholder="Name" [(ngModel)]="new_project.name" name="name">
+		</mat-form-field>
+		<mat-form-field class="col-md-12">
+			<input matInput placeholder="Client" [(ngModel)]="new_project.client" name="client">
+		</mat-form-field>
+		<mat-form-field class="col-md-12">
+		  <mat-select placeholder="Producer" [(ngModel)]="new_project.producer" name="producer">
+		  	<mat-option>Producers name</mat-option>
+		    <mat-option *ngFor="let employee of emp_list" [value]="employee.id">
+		      {{employee.first_name}} {{employee.last_name}}
+		    </mat-option>
+		  </mat-select>
+		</mat-form-field>
+		<mat-form-field class="col-md-12">
+			<textarea matInput placeholder="Location" [(ngModel)]="new_project.location" name="location">></textarea>
+		</mat-form-field>
+		<div>
+        	<button mat-raised-button style="background-color: #d7d652;" (click)="newProject()"> Save </button>
+	    	<button mat-raised-button style="background-color: #d7d652;" (click)="onNoClick()"> Close </button>
+		</div>
+	</form>
+</div>

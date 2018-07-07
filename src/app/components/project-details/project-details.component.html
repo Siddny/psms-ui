@@ -1,0 +1,73 @@
+<div class="container">
+	<mat-toolbar class="container-fluid" style="margin-bottom: 4px;" color="primary">
+		<h4>Project name</h4>
+	</mat-toolbar>
+	<div style="margin-bottom: 1.5em;">
+		<div class="row mb-1">
+			<mat-card class="col-md-12" style="margin-bottom: 0.5em; background-color: #f5f5f5;">
+		      <div class="col-md-12">
+			    <div class="row">
+					<h4>Crew</h4>
+					<span class="spacer"></span>
+					<mat-chip-list>
+					  <mat-chip (click)="openCrewMemberDialog(1)" style="background-color: #d7d652;">
+					  	<mat-icon>add</mat-icon> Crew
+					  </mat-chip>
+					</mat-chip-list>
+			    </div>
+				<div class="row">
+					<mat-card class="col-md-12">
+						<mat-list >
+						  <mat-list-item>
+						    <mat-icon mat-list-icon>account_circle</mat-icon>
+						    <h4 mat-line><b>user.first_name user.last_name</b></h4>
+						    <p mat-line>user.username user.email  </p>
+						  </mat-list-item>
+						  <hr>
+						</mat-list>
+					</mat-card>
+				</div>
+			  </div>
+			</mat-card>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-md-12">
+		<mat-toolbar style="background-color: #ffffff; margin-bottom: 4px;">
+			<h4>Equipments</h4>
+			<span class="spacer"></span>
+			<mat-chip-list>
+			  <mat-chip (click)="assignEquipmentsDiv()" style="background-color: #d7d652;">
+			  	<mat-icon>add</mat-icon>
+			  </mat-chip>
+			</mat-chip-list>
+		</mat-toolbar>
+		</div>
+	</div>
+	<mat-card *ngIf="showSelected">
+		<mat-toolbar color="primary">Assign Equipment to Employee</mat-toolbar>
+		<form class="row mt-1">
+			<mat-form-field class="col-md-5">
+			  <mat-select placeholder="Select Empoyee">
+			    <mat-option >
+			      emp.first_name emp.last_name
+			    </mat-option>
+			  </mat-select>
+			</mat-form-field>
+			<mat-form-field class="col-md-5">
+			  <mat-select placeholder="Toppings" [formControl]="toppings" multiple>
+			    <mat-select-trigger>
+			      {{toppings.value ? toppings.value[0] : ''}}
+			      <span *ngIf="toppings.value?.length > 1" class="additional-selection">
+			        (+{{toppings.value.length - 1}} others)
+			      </span>
+			    </mat-select-trigger>
+			    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+			  </mat-select>
+			</mat-form-field>
+			<div class="col-md-2">
+				<button mat-raised-button color="primary" (click)="assignEquipmentsDiv();newAssign();">Save</button>
+			</div>
+		</form>
+	</mat-card>
+</div>

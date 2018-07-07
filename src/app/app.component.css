@@ -13,3 +13,8 @@ mat-toolbar{
 .main{
 	background-color: #000000;
 }
+
+.router{
+	background-color: #c0ffee;
+	min-height: 94.5vh;
+}

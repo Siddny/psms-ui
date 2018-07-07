@@ -1,0 +1,14 @@
+<form>
+	<mat-toolbar style="background-color: #d7d652;">Add Crew to project</mat-toolbar>
+	<div *ngFor="let item of all_users">
+	    <mat-checkbox (click)="getUsers(item.id)">{{item.username}}</mat-checkbox>
+	</div>
+	<div class="row">
+		<mat-checkbox class="col-md-6">username 1</mat-checkbox>
+		<mat-checkbox class="col-md-6">username 2</mat-checkbox>
+		<mat-checkbox class="col-md-6">username 3</mat-checkbox>
+		<mat-checkbox class="col-md-6">username 4</mat-checkbox>
+		<mat-checkbox class="col-md-6">username 5</mat-checkbox>
+	</div>
+	<button mat-raised-button style="background-color: #d7d652;" (click)="addGroupUser()">Save</button>
+</form>

@@ -45,4 +45,14 @@ export class AssetsService {
   	let url = this.serverPath+'/assign_tool/'
   	return this.http.get(url, {headers : headers}).map(response=> response.json());
   }
+
+  newProject(project:any){
+    let url = this.serverPath+'/projects/'
+    return this.http.post(url , JSON.stringify(project), {headers : headers})
+  }
+
+  getProjects(){
+    let url = this.serverPath+'/projects/'
+    return this.http.get(url, {headers : headers}).map(response=> response.json());
+  }
 }

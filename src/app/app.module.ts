@@ -17,6 +17,7 @@ import { MatButtonModule }   from '@angular/material/button';
 // import { MatInputModule }    from '@angular/material/input';
 import { MatInputModule }    from '@angular/material';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { MatExpansionModule }from '@angular/material/expansion';
 import { MatDatepickerModule }from '@angular/material/datepicker';
@@ -61,7 +62,14 @@ import {
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AssetsComponent } from './components/assets/assets.component';
-import { ProjectsComponent } from './components/projects/projects.component';
+import { 
+    ProjectsComponent,
+    NewProjectDialog,
+    } from './components/projects/projects.component';
+import { 
+    ProjectDetailsComponent,
+    CrewMemberDialog,
+    } from './components/project-details/project-details.component';
 
 // import { htmlToPdfSave } from 'angular-save-html-to-pdf';
 
@@ -76,6 +84,9 @@ import { ProjectsComponent } from './components/projects/projects.component';
     NewCamUnit,
     AssetsComponent,
     ProjectsComponent,
+    NewProjectDialog,
+    ProjectDetailsComponent,
+    CrewMemberDialog,
   ],
   imports: [
     HttpClientModule,
@@ -103,6 +114,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
     NgxChartsModule,
     MatChipsModule,
     routing,
+    MatCheckboxModule,
   ],
   providers: [ 
     ServiceService,
@@ -117,6 +129,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
     CameraDetails,
     UpdateCameraDetails,
     NewCamUnit,
+    NewProjectDialog,
+    CrewMemberDialog,
   ]
 })
 export class AppModule { }
